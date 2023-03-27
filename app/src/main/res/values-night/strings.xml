@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="swicth_theme">Swicth Theme</string>
+    <string name="dark_mode">Dark Mode</string>
+    <string name="favorite_user">Favorite User</string>
+    <string name="your_favorite_is_empty">Your favorite is empty</string>
+    <string name="search_user_name">Search User Name</string>
+    <string name="not_found">not_found</string>
+    <string name="username">Username</string>
+    <string name="repositories">Repositories</string>
+    <string name="followers">Followers</string>
+    <string name="following">Following</string>
+    <string name="location">Location</string>
+    <string name="company">Company</string>
+    <string name="blog">Blog</string>
+    <string name="search_hint">Search User</string>
+</resources>

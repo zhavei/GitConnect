@@ -1,0 +1,67 @@
+dependencies {
+
+//region shared dependencies
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'androidx.core:core-ktx:1.9.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4"
+    def multidex_version = "2.0.1"
+    implementation "androidx.multidex:multidex:$multidex_version"
+
+//region ui dependencies
+    implementation "androidx.activity:activity-ktx:1.6.1"
+    implementation 'androidx.fragment:fragment-ktx:1.5.5'
+    implementation 'com.google.android.material:material:1.8.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+//nav component
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
+//viewPager2
+    implementation "androidx.viewpager2:viewpager2:1.0.0"
+//circle image
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+//glide
+    kapt 'com.github.bumptech.glide:compiler:4.13.2'
+    implementation 'com.github.bumptech.glide:glide:4.13.2'
+// shimmer
+    implementation 'com.facebook.shimmer:shimmer:0.5.0'
+//endregion
+
+//coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4"
+
+//daggerHilt
+    implementation "com.google.dagger:hilt-android:2.44"
+    kapt "com.google.dagger:hilt-android-compiler:2.44"
+    kapt "androidx.hilt:hilt-compiler:1.0.0"
+    kaptAndroidTest "androidx.hilt:hilt-compiler:1.0.0"
+
+// Preferences DataStore replace OldSharedPreferences
+    implementation "androidx.datastore:datastore-preferences:1.1.0-alpha01"
+
+    implementation "androidx.datastore:datastore-preferences:1.0.0"
+
+
+//Android SharedPreference delegation for Kotlin.
+    implementation 'com.chibatching.kotpref:kotpref:2.13.1'
+    implementation 'com.chibatching.kotpref:initializer:2.13.1'
+    implementation 'com.chibatching.kotpref:enum-support:2.13.1'
+
+//kirich ViewBinding-Delegate
+    implementation 'com.github.kirich1409:viewbindingpropertydelegate-full:1.5.8'
+
+    def lifecycleLiveData_version = "2.5.0"
+// LiveData
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.5.1'
+// Lifecycle only (without ViewModel or LiveData)
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.5.1'
+//lifecycle view-model
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
+
+//endregion
+
+}

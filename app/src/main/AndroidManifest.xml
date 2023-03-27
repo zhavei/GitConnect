@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.syafei.gitconnect">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:name=".GitConnectApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/github_splash"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/icons_github"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.GitConnect">
+        <activity
+            android:name=".ui.search.SearchActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.syafei.gitconnect.ui.onboarding.SplashScreenActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.syafei.gitconnect.ui.main.main.MainActivity"
+            android:theme="@style/Theme.GitConnect.NoActionBar" />
+        <activity android:name="com.syafei.gitconnect.ui.darkmode.DarkModeActivity" />
+        <activity android:name="com.syafei.gitconnect.ui.details.UserDetailActivity" />
+        <activity android:name="com.syafei.gitconnect.ui.favorite.FavoriteActivity" />
+    </application>
+
+</manifest>
