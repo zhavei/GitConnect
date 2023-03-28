@@ -6,74 +6,85 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.BlendModeColorFilterCompat
 import androidx.core.graphics.BlendModeCompat
+import by.kirich1409.viewbindingdelegate.viewBinding
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.syafei.gitconnect.R
 import com.syafei.gitconnect.databinding.ActivityDetailUserBinding
 import com.syafei.gitconnect.ui.details.fragment.TabsPagerAdapter
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.FlowPreview
 
 
-class UserDetailActivity : AppCompatActivity() {
+@FlowPreview
+@ExperimentalCoroutinesApi
+@AndroidEntryPoint
+class UserDetailActivity : AppCompatActivity(R.layout.activity_detail_user) {
 
-    private lateinit var binding: ActivityDetailUserBinding
+    private val binding: ActivityDetailUserBinding by viewBinding()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityDetailUserBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+
 
         if (supportActionBar != null) {
             (supportActionBar)?.title = "User Details"
         }
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
 
         setupTabsViewPager()
 
     }
 
     private fun setupTabsViewPager() {
-        val getUserName = intent.getStringExtra(USER_NAME)
-        val getUserId = intent.getIntExtra(USER_ID, 0)
 
-        val bundle = Bundle()
-        bundle.putString(USER_NAME, getUserName)
-        bundle.putInt(USER_ID, getUserId)
-
-        //custom color tab
-        binding.tabLayout.setSelectedTabIndicatorColor(Color.RED)
-        binding.tabLayout.setBackgroundColor(ContextCompat.getColor(this, R.color.primary_bold))
-        binding.tabLayout.tabTextColors =
-            ContextCompat.getColorStateList(this, android.R.color.white)
-        val numberOfTabs = 3
-        binding.tabLayout.tabMode = TabLayout.MODE_FIXED
-
-        val tabsAdapter = TabsPagerAdapter(
-            numberOfTabs,
-            this@UserDetailActivity,
-            bundle
-        )
-        binding.viewPagerDetails.adapter = tabsAdapter
-        binding.viewPagerDetails.isUserInputEnabled = true    // Enable Swipe
-
-        TabLayoutMediator(binding.tabLayout, binding.viewPagerDetails) { tab, posisition ->
-            when (posisition) {
-                0 -> {
-                    tab.text = "Profile"
-                    tab.setIcon(R.drawable.ic_baseline_person_24)
-                }
-                1 -> {
-                    tab.text = "Following"
-                    tab.setIcon(R.drawable.ic_baseline_person_add_24)
-                }
-                2 -> {
-                    tab.text = "Followers"
-                    tab.setIcon(R.drawable.ic_baseline_3p_24)
-                }
-            }
-            tab.icon?.colorFilter = BlendModeColorFilterCompat.createBlendModeColorFilterCompat(
-                Color.WHITE, BlendModeCompat.SRC_ATOP
+        binding.apply {
+            //custom color tab
+            tabLayout.setSelectedTabIndicatorColor(Color.RED)
+            tabLayout.setBackgroundColor(
+                ContextCompat.getColor(
+                    this@UserDetailActivity,
+                    R.color.primary_bold
+                )
             )
-        }.attach()
+            tabLayout.tabTextColors =
+                ContextCompat.getColorStateList(
+                    this@UserDetailActivity,
+                    android.R.color.white
+                )
+
+            tabLayout.tabMode = TabLayout.MODE_FIXED
+            binding.viewPagerDetails.isUserInputEnabled = true    // Enable Swipe
+        }
+
+        binding.apply {
+            val tabsAdapter = TabsPagerAdapter(
+                this@UserDetailActivity,
+            )
+            viewPagerDetails.adapter = tabsAdapter
+
+            TabLayoutMediator(tabLayout, viewPagerDetails) { tab, position ->
+                when (position) {
+                    0 -> {
+                        tab.text = "Profile"
+                        tab.setIcon(R.drawable.ic_baseline_person_24)
+                    }
+                    1 -> {
+                        tab.text = "Following"
+                        tab.setIcon(R.drawable.ic_baseline_person_add_24)
+                    }
+                    2 -> {
+                        tab.text = "Followers"
+                        tab.setIcon(R.drawable.ic_baseline_3p_24)
+                    }
+                }
+                tab.icon?.colorFilter = BlendModeColorFilterCompat.createBlendModeColorFilterCompat(
+                    Color.WHITE, BlendModeCompat.SRC_ATOP
+                )
+            }.attach()
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {
