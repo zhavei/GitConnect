@@ -3,7 +3,9 @@ package com.syafei.gitconnect.ui.main.main
 import android.app.AlertDialog
 import android.content.DialogInterface
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -16,7 +18,6 @@ import com.syafei.gitconnect.core.ui.MainAdapter
 import com.syafei.gitconnect.databinding.ActivityMainBinding
 import com.syafei.gitconnect.ui.darkmode.DarkModeActivity
 import com.syafei.gitconnect.ui.details.UserDetailActivity
-import com.syafei.gitconnect.ui.favorite.FavoriteActivity
 import com.syafei.gitconnect.ui.search.SearchActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -124,8 +125,9 @@ class MainActivity : AppCompatActivity() {
             when (menuItem.itemId) {
 
                 R.id.favorite -> {
-                    val intentFavorite = Intent(this, FavoriteActivity::class.java)
-                    startActivity(intentFavorite)
+                    Log.d("Main Activity", "installFavoriteModule: Success ")
+                    val uri = Uri.parse("git-connect://favorite")
+                    startActivity(Intent(Intent.ACTION_VIEW, uri))
                     true
                 }
 

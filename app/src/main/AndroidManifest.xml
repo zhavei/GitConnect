@@ -20,7 +20,6 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -29,7 +28,6 @@
             android:theme="@style/Theme.GitConnect.NoActionBar" />
         <activity android:name="com.syafei.gitconnect.ui.darkmode.DarkModeActivity" />
         <activity android:name="com.syafei.gitconnect.ui.details.UserDetailActivity" />
-        <activity android:name="com.syafei.gitconnect.ui.favorite.FavoriteActivity" />
     </application>
 
 </manifest>

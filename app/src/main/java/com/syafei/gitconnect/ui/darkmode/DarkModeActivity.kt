@@ -1,6 +1,7 @@
 package com.syafei.gitconnect.ui.darkmode
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
@@ -8,7 +9,6 @@ import androidx.lifecycle.asLiveData
 import androidx.lifecycle.lifecycleScope
 import com.syafei.gitconnect.R
 import com.syafei.gitconnect.databinding.ActivityDarkModeBinding
-import com.syafei.gitconnect.ui.favorite.FavoriteActivity
 import kotlinx.coroutines.launch
 
 class DarkModeActivity : AppCompatActivity() {
@@ -66,8 +66,8 @@ class DarkModeActivity : AppCompatActivity() {
         binding.appBarMainDark.toolbarMainDark.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.favorite -> {
-                    val intent = Intent(this, FavoriteActivity::class.java)
-                    startActivity(intent)
+                    val uri = Uri.parse("git-connect://favorite")
+                    startActivity(Intent(Intent.ACTION_VIEW, uri))
                     true
                 }
                 else -> false
