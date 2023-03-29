@@ -82,6 +82,8 @@ class SearchActivity : AppCompatActivity() {
                 Intent(this@SearchActivity, UserDetailActivity::class.java).also {
                     it.putExtra(UserDetailActivity.USER_NAME, data.login)
                     it.putExtra(UserDetailActivity.USER_ID, data.id)
+                    it.putExtra(UserDetailActivity.USER_FOLLOWING, data.following)
+                    it.putExtra(UserDetailActivity.USER_FOLLOWERS, data.followers)
                     startActivity(it)
                 }
             }
@@ -92,7 +94,6 @@ class SearchActivity : AppCompatActivity() {
 
     private fun setupRecyclerView() {
         userResultAdapter = MainAdapter()
-
         binding.apply {
             rvSearchActivity.layoutManager = LinearLayoutManager(this@SearchActivity)
             rvSearchActivity.setHasFixedSize(true)

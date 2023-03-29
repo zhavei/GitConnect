@@ -1,42 +1,23 @@
 package com.syafei.gitconnect.ui.details.fragment.followers
 
-
-import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.syafei.gitconnect.core.data.source.remote.old.RetrofitClient
-import com.syafei.gitconnect.core.data.source.remote.old.User
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import androidx.lifecycle.asLiveData
+import com.syafei.gitconnect.core.domain.usecase.GitConnectUseCase
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class FollowersViewModel : ViewModel() {
-    val listFollowers = MutableLiveData<ArrayList<User>>()
+@HiltViewModel
+class FollowersViewModel @Inject constructor(private val useCase: GitConnectUseCase) : ViewModel() {
 
-    fun setListFollowers(name: String) {
-        RetrofitClient.apiInstance.getFollowers(name).enqueue(object : Callback<ArrayList<User>> {
-            override fun onResponse(
-                call: Call<ArrayList<User>>,
-                response: Response<ArrayList<User>>
-            ) {
-                if (response.isSuccessful) {
-                    listFollowers.postValue(response.body())
-                }
-            }
+    fun getListFollowers(username: String) =
+        useCase.getFollowers(username).asLiveData()
 
-            override fun onFailure(call: Call<ArrayList<User>>, t: Throwable) {
-                Log.d(TAG, t.message.toString())
-            }
-
-        })
-    }
-
-    fun getListFollowers(): LiveData<ArrayList<User>>{
-        return listFollowers
-    }
 
     companion object {
         const val TAG = "this Followers View Model"
     }
 }
+
+
+
+

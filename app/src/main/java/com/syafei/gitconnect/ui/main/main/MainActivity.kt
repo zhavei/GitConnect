@@ -92,6 +92,8 @@ class MainActivity : AppCompatActivity() {
                 Intent(this@MainActivity, UserDetailActivity::class.java).also {
                     it.putExtra(UserDetailActivity.USER_NAME, data.login)
                     it.putExtra(UserDetailActivity.USER_ID, data.id)
+                    it.putExtra(UserDetailActivity.USER_FOLLOWING, data.following)
+                    it.putExtra(UserDetailActivity.USER_FOLLOWERS, data.followers)
                     startActivity(it)
                 }
             }

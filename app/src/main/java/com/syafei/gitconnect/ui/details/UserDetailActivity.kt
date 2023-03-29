@@ -27,6 +27,9 @@ class UserDetailActivity : AppCompatActivity(R.layout.activity_detail_user) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        val username = intent.getStringExtra(UserDetailActivity.USER_NAME)
+
+
 
         if (supportActionBar != null) {
             (supportActionBar)?.title = "User Details"

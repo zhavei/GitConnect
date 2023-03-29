@@ -83,6 +83,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_marginEnd="22dp"
+        app:backgroundTint="@color/primary_bold"
         android:layout_marginBottom="22dp"
         android:background="@drawable/ic_baseline_search_24"
         android:contentDescription="search user"

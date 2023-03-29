@@ -4,15 +4,22 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
+import by.kirich1409.viewbindingdelegate.viewBinding
 import com.bumptech.glide.Glide
 import com.syafei.gitconnect.R
 import com.syafei.gitconnect.databinding.ActivitySplashscreenBinding
 import com.syafei.gitconnect.ui.main.main.MainActivity
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.FlowPreview
 
 
-class SplashScreenActivity : AppCompatActivity() {
+@FlowPreview
+@ExperimentalCoroutinesApi
+@AndroidEntryPoint
+class SplashScreenActivity : AppCompatActivity(R.layout.activity_splashscreen) {
 
-    private lateinit var binding: ActivitySplashscreenBinding
+    private val binding: ActivitySplashscreenBinding by viewBinding()
 
     companion object {
         const val TIME_WAITING: Long = 3000
@@ -20,8 +27,6 @@ class SplashScreenActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivitySplashscreenBinding.inflate(layoutInflater)
-        setContentView(binding.root)
 
         supportActionBar?.hide()
 

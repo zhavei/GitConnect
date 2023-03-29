@@ -3,6 +3,7 @@ package com.syafei.gitconnect.ui.details.fragment.profile
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.core.content.ContextCompat
@@ -30,7 +31,6 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
     private val binding: FragmentProfileBinding by viewBinding()
     private val profileDetailViewModel: ProfileDetailViewModel by viewModels()
-    private lateinit var detailUserResponse: GitUser
 
     private var isFavorite: Boolean = false
 
@@ -64,16 +64,6 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         }
 
 
-        // open detail user url in browser
-        binding.apply {
-            toggleWebsite.setOnClickListener {
-                val intent = Intent(Intent.ACTION_VIEW)
-                intent.data = Uri.parse(detailUserResponse.htmlUrl)
-                startActivity(intent)
-            }
-        }
-
-
     }
 
     private fun setData(data: GitUser) {
@@ -103,6 +93,16 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             toggleFavorite.setOnClickListener {
                 profileDetailViewModel.addToFavorite(isFavorite, data)
                 setIsFavoriteState(!isFavorite)
+            }
+        }
+
+        // open detail user url in browser
+        binding.apply {
+            toggleWebsite.setOnClickListener {
+                val intent = Intent(Intent.ACTION_VIEW)
+                intent.data = Uri.parse(data.htmlUrl)
+                Log.i(TAG, "onViewCreated: check data $intent")
+                startActivity(intent)
             }
         }
 
@@ -140,5 +140,8 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         }
     }
 
+    companion object {
+        private const val TAG = "Profile Fragment"
+    }
 
 }

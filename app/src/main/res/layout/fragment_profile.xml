@@ -28,9 +28,11 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="15dp"
         app:fabSize="normal"
+        app:backgroundTint="@color/primary_bold"
         android:src="@drawable/ic_unfavorite"
         app:layout_constraintEnd_toEndOf="@+id/view"
-        app:layout_constraintTop_toTopOf="@+id/view" />
+        app:layout_constraintTop_toTopOf="@+id/view"
+        android:contentDescription="favorite Button" />
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/iv_detail_item_profile"

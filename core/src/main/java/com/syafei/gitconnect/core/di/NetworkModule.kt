@@ -35,7 +35,7 @@ class NetworkModule {
             .addInterceptor { chain ->
                 val request = chain.request().newBuilder().addHeader(
                     "Authorization",
-                    "token ${BuildConfig.API_TOKEN}"
+                    "token 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"
                 ).build()
                 chain.proceed(request)
             }
