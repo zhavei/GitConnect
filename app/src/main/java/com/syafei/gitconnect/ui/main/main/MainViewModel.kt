@@ -1,17 +1,13 @@
 package com.syafei.gitconnect.ui.main.main
 
-import android.util.Log
-import androidx.lifecycle.*
-import com.syafei.gitconnect.core.data.source.remote.old.RetrofitClient
-import com.syafei.gitconnect.core.data.source.remote.old.SearchUserResponse
-import com.syafei.gitconnect.core.data.source.remote.old.User
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
 import com.syafei.gitconnect.core.domain.usecase.GitConnectUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 import javax.inject.Inject
 
 @FlowPreview
