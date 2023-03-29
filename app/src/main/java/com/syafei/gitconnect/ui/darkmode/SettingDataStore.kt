@@ -7,14 +7,17 @@ import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.emptyPreferences
 import com.syafei.gitconnect.core.data.source.localdatabase.preference.dataStore
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
 import okio.IOException
+import javax.inject.Inject
+import javax.inject.Singleton
 
 
-
-class SettingDataStore(context: Context) {
+@Singleton
+class SettingDataStore @Inject constructor(@ApplicationContext context: Context) {
     companion object {
         private const val DATA_STORE_NAME = "setting_dark_mode.pref"
         private val IS_DARK_MODE = booleanPreferencesKey("is_dark_mode")
@@ -32,6 +35,20 @@ class SettingDataStore(context: Context) {
         }
     }
 
+    fun getDarkMode(): Flow<UIMode> = dataStore.data.catch {
+        if (it is IOException) {
+            it.printStackTrace()
+            emit(emptyPreferences())
+        } else {
+            throw it
+        }
+    }.map { preferences ->
+        when (preferences[IS_DARK_MODE] ?: false) {
+            true -> UIMode.DARK
+            false -> UIMode.LIGHT
+        }
+    }
+
     val uIModeFLow: Flow<UIMode> = dataStore.data.catch {
         if (it is IOException) {
             it.printStackTrace()
@@ -45,4 +62,6 @@ class SettingDataStore(context: Context) {
             false -> UIMode.LIGHT
         }
     }
+
+
 }

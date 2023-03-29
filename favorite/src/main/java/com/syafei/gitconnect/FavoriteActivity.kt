@@ -2,6 +2,7 @@ package com.syafei.gitconnect
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -11,7 +12,6 @@ import com.syafei.gitconnect.databinding.ActivityFavoriteBinding
 import com.syafei.gitconnect.di.FavoriteModuleDependencies
 import com.syafei.gitconnect.ui.darkmode.DarkModeActivity
 import com.syafei.gitconnect.ui.details.UserDetailActivity
-import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.EntryPointAccessors
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
@@ -61,6 +61,7 @@ class FavoriteActivity : AppCompatActivity() {
 
         viewModel.getFavorite.observe(this) {
             setList(it)
+            listEmpty(it.isEmpty())
         }
 
         setupAppBar()
@@ -96,7 +97,6 @@ class FavoriteActivity : AppCompatActivity() {
 
     }
 
-
     private fun setupAppBar() {
         binding.appBarMainFavorite.toolbarMainFavorite.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
@@ -108,5 +108,9 @@ class FavoriteActivity : AppCompatActivity() {
                 else -> false
             }
         }
+    }
+
+    private fun listEmpty(isEmpty: Boolean) {
+        binding.notFoundFavorite.visibility = if (isEmpty) View.VISIBLE else View.GONE
     }
 }

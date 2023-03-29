@@ -5,23 +5,21 @@ import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.google.android.material.snackbar.Snackbar
 import com.syafei.gitconnect.R
 import com.syafei.gitconnect.core.data.resourcerepository.Resource
-import com.syafei.gitconnect.core.data.source.remote.old.DetailUserResponse
 import com.syafei.gitconnect.core.domain.model.GitUser
 import com.syafei.gitconnect.databinding.FragmentProfileBinding
 import com.syafei.gitconnect.ui.details.UserDetailActivity
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.*
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.FlowPreview
 
 
 @FlowPreview
@@ -121,7 +119,8 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         } else {
             return
         }
-        Toast.makeText(requireActivity(), message, Toast.LENGTH_SHORT).show()
+        val snackBar = Snackbar.make(binding.root, message, Snackbar.LENGTH_SHORT)
+        snackBar.show()
     }
 
     private fun showProgressbar(progres: Boolean) {

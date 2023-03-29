@@ -3,26 +3,33 @@ package com.syafei.gitconnect.ui.darkmode
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.lifecycle.asLiveData
 import androidx.lifecycle.lifecycleScope
 import com.syafei.gitconnect.R
 import com.syafei.gitconnect.databinding.ActivityDarkModeBinding
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.launch
 
+@FlowPreview
+@ExperimentalCoroutinesApi
+@AndroidEntryPoint
 class DarkModeActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDarkModeBinding
 
-    private lateinit var settingDataStore: SettingDataStore
+    private val viewModel: DarkModeViewModel by viewModels()
+
+    private var isDarkThemeEnabled: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDarkModeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        settingDataStore = SettingDataStore(this)
         setupAppBar()
 
         supportActionBar?.hide()
@@ -35,33 +42,26 @@ class DarkModeActivity : AppCompatActivity() {
 
     //region Dark Mode
     private fun observeUIPreferences() {
-        settingDataStore.uIModeFLow.asLiveData().observe(this) { uiMode ->
-            setCheckedMode(uiMode)
-        }
-    }
-
-    private fun setCheckedMode(uiMode: UIMode?) {
-        if (uiMode == UIMode.LIGHT) {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-            binding.switchMain.isChecked = false
-        } else if (uiMode == UIMode.DARK) {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-            binding.switchMain.isChecked = true
+        viewModel.getThemePreference().observe(this) { isDarkThemeEnabled ->
+            val nightMode =
+                if (isDarkThemeEnabled) AppCompatDelegate.MODE_NIGHT_YES else AppCompatDelegate.MODE_NIGHT_NO
+            AppCompatDelegate.setDefaultNightMode(nightMode)
+            binding.switchMain.isChecked = isDarkThemeEnabled
         }
     }
 
     private fun initViewSwitch() {
         binding.switchMain.setOnCheckedChangeListener { _, isChecked ->
+            val newThemePreference = !isDarkThemeEnabled
             lifecycleScope.launch {
                 when (isChecked) {
-                    true -> settingDataStore.setDarkMode(UIMode.DARK)
-                    false -> settingDataStore.setDarkMode(UIMode.LIGHT)
+                    true -> viewModel.saveThemePreference(newThemePreference)
+                    false -> viewModel.saveThemePreference(!newThemePreference)
                 }
             }
         }
     }
     //endregion
-
     private fun setupAppBar() {
         binding.appBarMainDark.toolbarMainDark.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
