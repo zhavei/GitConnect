@@ -35,12 +35,6 @@ jobs:
       - store_artifacts:  
           path: app/build/outputs/apk/debug/
           destination: artifact-file
-      - run:
-          name: Touch local properties
-          command: touch local.properties
-      - run: 
-          name: Add Api Key
-          command: echo "apiKey=\"\"" >> local.properties
       
       
       
