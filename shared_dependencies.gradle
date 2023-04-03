@@ -61,6 +61,9 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.5.1'
 //lifecycle view-model
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
+// leakcanary
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.10'
+
 
 //endregion
 
