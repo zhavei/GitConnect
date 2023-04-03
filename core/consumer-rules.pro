@@ -107,18 +107,20 @@ public *;
 }
 ##---------------END Proguard Glide Config----------
 
-##------------- proguard config for ViewBindnig ----------
+##------------- proguard config for ViewBindnig and kirich1409.viewbindingdelegate----------
 
--keep class com.rmaprojects.phonepedia.databinding.* {
-    public static ** inflate( ** );
-    public static ** bind( ** );
-}
--keep class com.rmaprojects.favorite.databinding.* {
+-keep class com.syafei.gitconnect.databinding.* {
     public static ** inflate( ** );
     public static ** bind( ** );
 }
 
--keep class com.rmaprojects.phonepedia.presentation.home.*
+-keep class com.syafei.gitconnect.ui.* {
+    public static ** inflate( ** );
+    public static ** bind( ** );
+}
+
+
+-keep class com.syafei.gitconnect.ui.*
 
 ##---------------End proguard configuration for ViewBinding  ----------
 
