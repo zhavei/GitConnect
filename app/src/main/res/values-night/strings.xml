@@ -14,4 +14,6 @@
     <string name="company">Company</string>
     <string name="blog">Blog</string>
     <string name="search_hint">Search User</string>
+    <string name="detail_user_tablayout">detail user tablayout</string>
+    <string name="splash_screen_logo">splash screen logo</string>
 </resources>

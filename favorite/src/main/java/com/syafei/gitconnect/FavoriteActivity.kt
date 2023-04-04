@@ -7,7 +7,6 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.syafei.gitconnect.core.domain.model.GitUser
-import com.syafei.gitconnect.core.ui.MainAdapter
 import com.syafei.gitconnect.databinding.ActivityFavoriteBinding
 import com.syafei.gitconnect.di.FavoriteModuleDependencies
 import com.syafei.gitconnect.ui.darkmode.DarkModeActivity
@@ -30,7 +29,7 @@ class FavoriteActivity : AppCompatActivity() {
         factory
     }
 
-    private lateinit var userFavoriteAdapter: MainAdapter
+    private lateinit var userFavoriteAdapter: FavoriteAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         DaggerFavoriteComponent.builder()
@@ -69,7 +68,7 @@ class FavoriteActivity : AppCompatActivity() {
     }
 
     private fun setupRecyclerView() {
-        userFavoriteAdapter = MainAdapter()
+        userFavoriteAdapter = FavoriteAdapter()
 
         binding.apply {
             rvUserFavorite.layoutManager = LinearLayoutManager(this@FavoriteActivity)
@@ -82,7 +81,7 @@ class FavoriteActivity : AppCompatActivity() {
     private fun setList(list: List<GitUser>) {
 
         userFavoriteAdapter.submitList(list)
-        userFavoriteAdapter.setOnItemClickCallBack(object : MainAdapter.OnItemClickCallBack {
+        userFavoriteAdapter.setOnItemClickCallBack(object : FavoriteAdapter.OnItemClickCallBack {
             override fun onItemClicked(data: GitUser) {
                 Intent(this@FavoriteActivity, UserDetailActivity::class.java).also {
                     it.putExtra(UserDetailActivity.USER_NAME, data.login)

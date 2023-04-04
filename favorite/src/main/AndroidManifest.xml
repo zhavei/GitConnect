@@ -17,6 +17,7 @@
    <!-- uri for deep_link-->
     <application>
         <activity android:name="com.syafei.gitconnect.FavoriteActivity"
+            android:theme="@style/Theme.GitConnect2"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />

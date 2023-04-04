@@ -20,9 +20,9 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
 
-        /* Properties properties = new Properties()
+         Properties properties = new Properties()
          properties.load(project.rootProject.file('local.properties').newDataInputStream())
-         buildConfigField("String", "API_TOKEN", "${properties.getProperty('API_TOKEN')}")*/
+         buildConfigField "String", "API_TOKEN", "\"${properties.getProperty("API_TOKEN")}\""
 
     }
 
@@ -30,12 +30,12 @@ android {
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            buildConfigField "String", "API_KEY", "\"$API_TOKEN\""
+            //buildConfigField "String", "API_KEY", "\"$API_TOKEN\""
         }
         debug {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            buildConfigField "String", "API_KEY", "\"$API_TOKEN\""
+            //buildConfigField "String", "API_KEY", "\"$API_TOKEN\""
         }
 
     }

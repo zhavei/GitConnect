@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/primary_soft"
     tools:context=".ui.details.UserDetailActivity">
 
     <View
@@ -26,23 +25,23 @@
         android:id="@+id/tabLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-
-        app:tabIndicatorAnimationMode="fade"
-        app:tabIndicatorColor="@color/primary_soft"
-        app:tabMode="fixed"
-        app:tabSelectedTextColor="@color/primary_soft"
-        app:tabTextColor="@color/on_primary_soft"
-        app:tabGravity="fill"
-        android:fitsSystemWindows="true"
-        android:fillViewport="true"
         android:backgroundTint="@color/primary_bold"
-        app:tabMaxWidth="0dp"
-        app:tabTextAppearance="?android:attr/textAppearanceMedium"
-        app:textAllCaps="false"
-
+        android:contentDescription="@string/detail_user_tablayout"
+        android:fillViewport="true"
+        android:fitsSystemWindows="true"
         app:layout_constraintEnd_toEndOf="@+id/view"
         app:layout_constraintStart_toStartOf="@+id/view"
-        app:layout_constraintTop_toTopOf="@+id/view"/>
+        app:layout_constraintTop_toTopOf="@+id/view"
+        app:tabGravity="fill"
+        app:tabIndicatorAnimationMode="fade"
+        app:tabIndicatorColor="@color/primary_soft"
+        app:tabMaxWidth="0dp"
+        app:tabMode="fixed"
+        app:tabSelectedTextColor="@color/primary_soft"
+
+        app:tabTextAppearance="?android:attr/textAppearanceMedium"
+        app:tabTextColor="@color/on_primary_soft"
+        app:textAllCaps="false" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/view_pager_details"
