@@ -7,8 +7,8 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.syafei.gitconnect.core.domain.model.GitUser
-import com.syafei.gitconnect.databinding.ActivityFavoriteBinding
 import com.syafei.gitconnect.di.FavoriteModuleDependencies
+import com.syafei.gitconnect.favorite.databinding.ActivityFavoriteBinding
 import com.syafei.gitconnect.ui.darkmode.DarkModeActivity
 import com.syafei.gitconnect.ui.details.UserDetailActivity
 import dagger.hilt.android.EntryPointAccessors
@@ -110,6 +110,13 @@ class FavoriteActivity : AppCompatActivity() {
     }
 
     private fun listEmpty(isEmpty: Boolean) {
-        binding.notFoundFavorite.visibility = if (isEmpty) View.VISIBLE else View.GONE
+        if (isEmpty) {
+            binding.notFoundFavorite.visibility = View.VISIBLE
+            binding.viewEmpty.visibility = View.VISIBLE
+        } else {
+            binding.notFoundFavorite.visibility = View.GONE
+            binding.viewEmpty.visibility = View.GONE
+        }
+
     }
 }

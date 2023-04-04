@@ -5,7 +5,7 @@
     <string name="favorite_user">Favorite User</string>
     <string name="your_favorite_is_empty">Your favorite is empty</string>
     <string name="search_user_name">Search User Name</string>
-    <string name="not_found">not_found</string>
+    <string name="not_found">User Not Found</string>
     <string name="username">Username</string>
     <string name="repositories">Repositories</string>
     <string name="followers">Followers</string>
@@ -16,4 +16,5 @@
     <string name="search_hint">Search User</string>
     <string name="detail_user_tablayout">detail user tablayout</string>
     <string name="splash_screen_logo">splash screen logo</string>
+    <string name="loading" />
 </resources>

@@ -38,9 +38,10 @@ class MainActivity : AppCompatActivity() {
 
         setupRecyclerView()
         setupAppBar()
+        refreshApp()
         notFound(true)
 
-        viewModel.users.observe(this) {
+        /*viewModel.users.observe(this) {
             if (it != null) {
                 when (it) {
                     is Resource.Loading -> {
@@ -59,13 +60,41 @@ class MainActivity : AppCompatActivity() {
                         }
                     }
                     is Resource.Error -> {
+                        notFound(true)
                         showProgressbar(false)
                         Toast.makeText(this, "${it.message}", Toast.LENGTH_SHORT).show()
                     }
                     else -> {}
                 }
             }
+        }*/
+
+        viewModel.users.observe(this) { resource ->
+            when (resource) {
+                is Resource.Loading -> {
+                    notFound(false)
+                    showProgressbar(true)
+                }
+                is Resource.Success -> {
+                    showProgressbar(false)
+                    if (resource.data.isNullOrEmpty()) {
+                        notFound(true)
+                    } else {
+                        notFound(false)
+                        resource.data?.let {
+                            setList(it)
+                        }
+                    }
+                }
+                is Resource.Error -> {
+                    notFound(true)
+                    showProgressbar(false)
+                    Toast.makeText(this, resource.message, Toast.LENGTH_SHORT).show()
+                }
+                else -> {}
+            }
         }
+
 
         binding.apply {
             searchFab.setOnClickListener {
@@ -103,6 +132,16 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    //currently fixing this swipe function, if connection failed not fetching to a network when swiping
+    private fun refreshApp() {
+        binding.apply {
+            swipeToRefresh.setOnRefreshListener {
+                viewModel.fetchUsers()
+                swipeToRefresh.isRefreshing = false
+            }
+        }
+    }
+
     private fun showProgressbar(progres: Boolean) {
         if (progres) {
             binding.progressBar.visibility = View.VISIBLE
@@ -114,8 +153,10 @@ class MainActivity : AppCompatActivity() {
     private fun notFound(state: Boolean) {
         if (state) {
             binding.tvNotfound.visibility = View.VISIBLE
+            binding.viewEmpty.visibility = View.VISIBLE
         } else {
             binding.tvNotfound.visibility = View.GONE
+            binding.viewEmpty.visibility = View.GONE
         }
     }
 

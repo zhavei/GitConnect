@@ -27,6 +27,12 @@ class MainViewModel @Inject constructor(
         useCase.fetchUsers(it).asLiveData()
     }
 
+    //not workings when swiped
+    fun fetchUsers() {
+        Transformations.switchMap(username) {
+            useCase.fetchUsers(it).asLiveData()
+        }
+    }
 
     companion object {
         const val TAG = "SEARCH_USER_VIEWMODEL"
