@@ -125,9 +125,9 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
     private fun showProgressbar(progres: Boolean) {
         if (progres) {
-            binding.progressBarDetail.visibility = View.VISIBLE
+            binding.viewLoading.visibility = View.VISIBLE
         } else {
-            binding.progressBarDetail.visibility = View.GONE
+            binding.viewLoading.visibility = View.GONE
         }
     }
 

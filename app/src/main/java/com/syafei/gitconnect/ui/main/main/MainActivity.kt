@@ -41,34 +41,6 @@ class MainActivity : AppCompatActivity() {
         refreshApp()
         notFound(true)
 
-        /*viewModel.users.observe(this) {
-            if (it != null) {
-                when (it) {
-                    is Resource.Loading -> {
-                        notFound(false)
-                        showProgressbar(true)
-                    }
-                    is Resource.Success -> {
-                        showProgressbar(false)
-                        if (it.data.isNullOrEmpty()) {
-                            notFound(true)
-                        } else {
-                            notFound(false)
-                            it.data?.let { listData ->
-                                setList(listData)
-                            }
-                        }
-                    }
-                    is Resource.Error -> {
-                        notFound(true)
-                        showProgressbar(false)
-                        Toast.makeText(this, "${it.message}", Toast.LENGTH_SHORT).show()
-                    }
-                    else -> {}
-                }
-            }
-        }*/
-
         viewModel.users.observe(this) { resource ->
             when (resource) {
                 is Resource.Loading -> {
@@ -144,9 +116,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun showProgressbar(progres: Boolean) {
         if (progres) {
-            binding.progressBar.visibility = View.VISIBLE
+            binding.viewEmpty.visibility = View.VISIBLE
         } else {
-            binding.progressBar.visibility = View.GONE
+            binding.viewEmpty.visibility = View.GONE
         }
     }
 
