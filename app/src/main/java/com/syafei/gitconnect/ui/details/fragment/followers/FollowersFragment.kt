@@ -121,9 +121,9 @@ class FollowersFragment : Fragment() {
 
     private fun showProgressbar(progres: Boolean) {
         if (progres) {
-            binding.progressBarFollow.visibility = View.VISIBLE
+            binding.viewLoading.visibility = View.VISIBLE
         } else {
-            binding.progressBarFollow.visibility = View.GONE
+            binding.viewLoading.visibility = View.GONE
         }
     }
 

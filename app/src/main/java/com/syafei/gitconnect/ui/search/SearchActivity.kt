@@ -65,6 +65,7 @@ class SearchActivity : AppCompatActivity() {
                     }
                     is Resource.Error -> {
                         showProgressbar(false)
+                        notFound(true)
                         Toast.makeText(this, "${it.message}", Toast.LENGTH_SHORT).show()
                     }
                     else -> {}
@@ -111,9 +112,9 @@ class SearchActivity : AppCompatActivity() {
 
     private fun showProgressbar(progres: Boolean) {
         if (progres) {
-            binding.progressBar.visibility = View.VISIBLE
+            binding.viewLoading.visibility = View.VISIBLE
         } else {
-            binding.progressBar.visibility = View.GONE
+            binding.viewLoading.visibility = View.GONE
         }
     }
 

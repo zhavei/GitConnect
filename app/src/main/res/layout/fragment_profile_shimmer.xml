@@ -28,28 +28,27 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="15dp"
         android:contentDescription="favorite Button"
+        app:backgroundTint="@color/primary_soft"
         app:fabSize="normal"
-        app:backgroundTint="@color/primary_bold"
-        app:layout_constraintTop_toTopOf="@+id/view"
         app:layout_constraintEnd_toEndOf="@+id/view"
-        tools:src="@drawable/ic_unfavorite" />
+        app:layout_constraintTop_toTopOf="@+id/view" />
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/iv_detail_item_profile"
         android:layout_width="175dp"
         android:layout_height="145dp"
         android:layout_marginTop="20dp"
-        tools:src="@drawable/github_splash"
+        android:src="@color/primary_soft"
         app:layout_constraintEnd_toEndOf="@+id/view"
         app:layout_constraintStart_toStartOf="@+id/view"
         app:layout_constraintTop_toTopOf="@+id/view" />
 
     <TextView
         android:id="@+id/tv_detail_name"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        tools:text="@string/username"
+        android:background="@color/primary_soft"
         android:textAlignment="center"
         android:textColor="@color/primary_bold"
         android:textSize="18sp"
@@ -60,9 +59,10 @@
 
     <TextView
         android:id="@+id/tv_detail_usernames"
-        android:layout_width="wrap_content"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
-        tools:text="@string/github_com_username"
+        android:layout_marginTop="2dp"
+        android:background="@color/primary_soft"
         android:textAlignment="center"
         android:textColor="@color/primary_bold"
         android:textSize="16sp"
@@ -85,12 +85,12 @@
 
     <TextView
         android:id="@+id/tv_detail_repository"
-        android:layout_width="wrap_content"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginStart="50dp"
         android:layout_marginTop="16dp"
-        tools:text="@string/sample_number"
+        android:background="@color/primary_soft"
         android:textColor="@color/primary_bold"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -99,11 +99,11 @@
 
     <TextView
         android:id="@+id/tv_followers_repository"
-        android:layout_width="wrap_content"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="16dp"
-        tools:text="@string/sample_number"
+        android:background="@color/primary_soft"
         android:textColor="@color/primary_bold"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -113,12 +113,12 @@
 
     <TextView
         android:id="@+id/tv_following_repository"
-        android:layout_width="wrap_content"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="50dp"
-        tools:text="@string/sample_number"
+        android:background="@color/primary_soft"
         android:textColor="@color/primary_bold"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -127,45 +127,45 @@
 
     <TextView
         android:id="@+id/repository"
-        android:layout_width="wrap_content"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="8dp"
-        android:text="@string/repositories"
         android:textColor="@color/primary_bold"
         android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/tv_detail_repository"
         app:layout_constraintStart_toStartOf="@+id/tv_detail_repository"
-        app:layout_constraintTop_toBottomOf="@+id/tv_detail_repository" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_detail_repository"
+        tools:background="@color/primary_soft" />
 
     <TextView
         android:id="@+id/Followers"
-        android:layout_width="wrap_content"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="8dp"
-        android:text="@string/followers"
         android:textColor="@color/primary_bold"
         android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/tv_followers_repository"
         app:layout_constraintStart_toStartOf="@+id/tv_followers_repository"
-        app:layout_constraintTop_toBottomOf="@+id/tv_followers_repository" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_followers_repository"
+        tools:background="@color/primary_soft" />
 
     <TextView
         android:id="@+id/following"
-        android:layout_width="wrap_content"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="8dp"
-        android:text="@string/following"
         android:textColor="@color/primary_bold"
         android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/tv_following_repository"
         app:layout_constraintStart_toStartOf="@+id/tv_following_repository"
-        app:layout_constraintTop_toBottomOf="@+id/tv_following_repository" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_following_repository"
+        tools:background="@color/primary_soft" />
 
     <View
         android:id="@+id/line_border2"
@@ -184,19 +184,18 @@
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_marginTop="16dp"
-        android:src="@drawable/ic_baseline_location_city_24"
         app:layout_constraintStart_toStartOf="@+id/line_border2"
         app:layout_constraintTop_toBottomOf="@+id/line_border2"
-        app:tint="@color/primary_bold" />
+        tools:src="@color/primary_soft" />
 
     <TextView
         android:id="@+id/tv_detail_location"
-        android:layout_width="0dp"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
+        android:background="@color/primary_soft"
         android:maxLength="50"
         android:maxLines="1"
-        tools:text="@string/location"
         android:textColor="@color/primary_bold"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView"
@@ -208,29 +207,27 @@
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_marginTop="16dp"
-        android:src="@drawable/ic_baseline_work_24"
         app:layout_constraintStart_toStartOf="@+id/imageView"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:tint="@color/primary_bold" />
+        tools:src="@color/primary_soft" />
 
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_marginTop="16dp"
-        android:src="@drawable/ic_baseline_create_24"
         app:layout_constraintStart_toStartOf="@+id/imageView2"
         app:layout_constraintTop_toBottomOf="@+id/imageView2"
-        app:tint="@color/primary_bold" />
+        tools:src="@color/primary_soft" />
 
     <TextView
         android:id="@+id/tv_detail_company"
-        android:layout_width="0dp"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
+        android:background="@color/primary_soft"
         android:maxLength="50"
         android:maxLines="1"
-        tools:text="@string/company"
         android:textColor="@color/primary_bold"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView2"
@@ -239,57 +236,16 @@
 
     <TextView
         android:id="@+id/tv_detail_blog"
-        android:layout_width="0dp"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
+        android:background="@color/primary_soft"
         android:maxLength="50"
         android:maxLines="1"
-        tools:text="@string/blog"
         android:textColor="@color/primary_bold"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView3"
         app:layout_constraintStart_toEndOf="@+id/imageView3"
         app:layout_constraintTop_toTopOf="@+id/imageView3" />
-
-    <ToggleButton
-        android:id="@+id/toggle_website"
-        android:layout_width="38dp"
-        android:layout_height="38dp"
-        android:background="@drawable/ic_baseline_open_in_browser_24"
-        android:backgroundTint="@color/primary_soft"
-        android:focusable="false"
-        android:focusableInTouchMode="false"
-        android:textOff=""
-        android:textOn=""
-        app:layout_constraintBottom_toBottomOf="@+id/view"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_detail_blog" />
-
-
-    <TextView
-        android:id="@+id/tv_notfound_detail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/not_found"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="parent" />
-
-    <com.facebook.shimmer.ShimmerFrameLayout
-        android:id="@+id/loading_shimmer"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <include layout="@layout/fragment_profile_shimmer" />
-
-    </com.facebook.shimmer.ShimmerFrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

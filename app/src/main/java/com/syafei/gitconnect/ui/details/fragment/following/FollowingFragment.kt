@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.syafei.gitconnect.core.data.resourcerepository.Resource
 import com.syafei.gitconnect.core.domain.model.GitUser
-import com.syafei.gitconnect.core.ui.MainAdapter
 import com.syafei.gitconnect.databinding.FragmentFollowBinding
 import com.syafei.gitconnect.ui.details.UserDetailActivity
 import com.syafei.gitconnect.ui.details.fragment.FollowsAdapter
@@ -123,9 +122,9 @@ class FollowingFragment : Fragment() {
 
     private fun showProgressbar(progress: Boolean) {
         if (progress) {
-            binding.progressBarFollow.visibility = View.VISIBLE
+            binding.viewLoading.visibility = View.VISIBLE
         } else {
-            binding.progressBarFollow.visibility = View.GONE
+            binding.viewLoading.visibility = View.GONE
         }
     }
 

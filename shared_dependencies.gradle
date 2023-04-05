@@ -57,7 +57,6 @@ dependencies {
 //kirich ViewBinding-Delegate
     implementation 'com.github.kirich1409:viewbindingpropertydelegate-full:1.5.8'
 
-    def lifecycleLiveData_version = "2.5.0"
 // LiveData
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.5.1'
 // Lifecycle only (without ViewModel or LiveData)
