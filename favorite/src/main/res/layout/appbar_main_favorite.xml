@@ -17,8 +17,10 @@
                 android:id="@+id/iv_main"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:contentDescription="icon"
                 android:layout_gravity="center_vertical"
-                android:src="@drawable/github_splash" />
+                android:src="@drawable/github_mark" />
+
 
             <TextView
                 android:layout_width="wrap_content"

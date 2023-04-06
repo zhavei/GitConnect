@@ -183,6 +183,7 @@
         android:id="@+id/imageView"
         android:layout_width="25dp"
         android:layout_height="25dp"
+        android:contentDescription="image profile"
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="@+id/line_border2"
         app:layout_constraintTop_toBottomOf="@+id/line_border2"
@@ -207,6 +208,7 @@
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_marginTop="16dp"
+        android:contentDescription="image"
         app:layout_constraintStart_toStartOf="@+id/imageView"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
         tools:src="@color/primary_soft" />

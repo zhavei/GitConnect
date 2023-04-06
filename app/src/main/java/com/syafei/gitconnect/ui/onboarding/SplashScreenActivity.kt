@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import by.kirich1409.viewbindingdelegate.viewBinding
-import com.bumptech.glide.Glide
 import com.syafei.gitconnect.R
 import com.syafei.gitconnect.databinding.ActivitySplashscreenBinding
 import com.syafei.gitconnect.ui.main.main.MainActivity
@@ -33,7 +32,7 @@ class SplashScreenActivity : AppCompatActivity(R.layout.activity_splashscreen) {
         setDelayedMode()
         binding.tvSplash.text = getString(R.string.app_name)
 
-        Glide.with(this).load(getImage("github_splash")).into(binding.ivSplashscreeen)
+
     }
 
     private fun setDelayedMode() {
@@ -45,8 +44,6 @@ class SplashScreenActivity : AppCompatActivity(R.layout.activity_splashscreen) {
         }, TIME_WAITING)
     }
 
-    private fun getImage(imageName: String): Int {
-        return resources.getIdentifier(imageName, "drawable", packageName)
-    }
+
 
 }
