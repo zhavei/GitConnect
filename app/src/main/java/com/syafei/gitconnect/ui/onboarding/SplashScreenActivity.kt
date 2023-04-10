@@ -3,6 +3,7 @@ package com.syafei.gitconnect.ui.onboarding
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.syafei.gitconnect.R
@@ -36,8 +37,7 @@ class SplashScreenActivity : AppCompatActivity(R.layout.activity_splashscreen) {
     }
 
     private fun setDelayedMode() {
-
-        Handler().postDelayed({
+        Handler(Looper.getMainLooper()).postDelayed({
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()

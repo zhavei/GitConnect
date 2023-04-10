@@ -26,7 +26,10 @@ class FollowingFragment : Fragment() {
     private var _binding: FragmentFollowBinding? = null
     private val binding get() = _binding!!
     private val viewModel: FollowingViewModel by viewModels()
-    private lateinit var adapter: FollowsAdapter
+
+    private val adapter: FollowsAdapter by lazy {
+        FollowsAdapter()
+    }
     private lateinit var userName: String
 
     override fun onCreateView(
@@ -49,7 +52,6 @@ class FollowingFragment : Fragment() {
         binding.apply {
             rvFollow.layoutManager = LinearLayoutManager(activity)
             rvFollow.setHasFixedSize(true)
-            adapter = FollowsAdapter()
             rvFollow.adapter = adapter
 
             if (followingNumber == 0) {
